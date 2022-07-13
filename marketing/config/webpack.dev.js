@@ -10,6 +10,9 @@ const devConfig = {
       index: "index.html",
     },
   },
+  // needed to avoid warning message in devtools
+  // error: failed to load source map for webpack...""
+  devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
