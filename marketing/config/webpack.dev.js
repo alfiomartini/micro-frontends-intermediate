@@ -6,6 +6,8 @@ const devConfig = {
   mode: "development",
   devServer: {
     port: 8081,
+    // always return the index.html page if the user types a wrong path?
+    //  related to navigation
     historyApiFallback: {
       index: "index.html",
     },

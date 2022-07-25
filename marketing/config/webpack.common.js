@@ -8,7 +8,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             // presets are applied from right to left
-            presets: ["@babel/preset-react", "@babel/preset-env"],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
             // plugins are applied from left to right
             plugins: ["@babel/plugin-transform-runtime"],
           },

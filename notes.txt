@@ -1,0 +1,56 @@
+- App Overview:
+      Container: (React)
+        Marketing: React 
+        Authentication: React 
+        Dashboard: Vue 
+- Architecture determined by Requirements
+- Normal approaches
+  1) Share states between apps with redux
+  2) The Container must be written with Web Components 
+  3) Each microfrontend can be a React Component that is directly used 
+    by another app 
+  4) Only communicate between apps using 'xyz' system
+
+- For this app, we have the following requirements 
+  1) Zero coupling between child components 
+     - No importing of functions/objects/classes/etc 
+     - No shared state 
+     - Shared libraries through Module Federation is correct
+     - It is fundamental, to achieve independency and flexibilty 
+     when developing the isolated microfrontends.
+
+  2) Near zero-coupling between container and child apps 
+   - Container should not assume that a child is using a particular framework 
+   - Any necessary communications done with callbacks or simple events 
+
+  3) CSS from one project should not affect another
+   - CSS should be scoped 
+   - Styled Components (React)
+   - Emotion
+   - CSS Modules ?
+
+  4) Version Control (monorepo vs separate) should not have any impact on 
+     the overall project 
+     - Some people want to use monorepo 
+     - Some peope want to keep everything in a separate repo 
+
+  5) Container should be able to decide to always use the lates version of a microfrontend 
+  or define a specific version 
+     (1) Container will allways use the latest version of a child app (does not require
+     redeployment of container)
+     (2) Container can specify what version of a child it wants to use (requires a 
+     redeployment to change it)
+         
+- Projects are being set up from scratch, without CRA or Vue Cli
+- Currently CRA and Vue Cli are being shipped with a webpack's version without Module Federation Plugin
+- Webpack allow us to create and extend config files, in a kind of refinement/inheritance
+  relationship
+- Running webpack from command line:  npx webpack --config config/webpack.dev.js
+- https://stackoverflow.com/questions/61767538/devtools-failed-to-load-sourcemap-for-webpack-node-modules-js-map-http-e
+
+- Overall Architecture:
+   1) Marketing: Home Page, Pricing Page 
+   2) Authentication: Sign In Page 
+   3) DashBoard: DashBoardPage
+   4) In addition, we still have one container as a controller for the 3
+   microfrontends above
