@@ -56,3 +56,4 @@
    microfrontends above
 
 - Exercise: take a look at Material/UI
+- Exercise: configure webpack to accept jsx files
