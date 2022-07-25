@@ -21,7 +21,7 @@ const devConfig = {
       name: "marketing",
       filename: "remoteEntry.js",
       exposes: {
-        "./Marketing": "./src/bootstrap",
+        "./MarketingApp": "./src/bootstrap",
       },
     }),
     new HtmlWebpackPlugin({
