@@ -54,3 +54,5 @@
    3) DashBoard: DashBoardPage
    4) In addition, we still have one container as a controller for the 3
    microfrontends above
+
+- Exercise: take a look at Material/UI
