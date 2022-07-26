@@ -57,3 +57,12 @@
 
 - Exercise: take a look at Material/UI
 - Exercise: configure webpack to accept jsx files
+
+- Deployment Considerations
+  1) Want to deploy each microfrontend independently (including the container)
+  2) Location of child app remoteEntry.js files must be known at build time 
+  3) Many front-end deployment solutions assume you're deploying a single project - 
+    we need something that can handle multiple different ones.
+  4) We probably need a CI/CD pipeline of some sort 
+  5) At present, the remoteEntry.js file name is fixed. Need to think about caching 
+  issues.
