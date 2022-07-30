@@ -7,7 +7,7 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   devServer: {
-    port: 8080,
+    port: 8090,
     // always return the index.html page if the user types a wrong path?
     //  related to navigation
     historyApiFallback: {
@@ -21,7 +21,7 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        marketing: "marketing@http://localhost:8082/remoteEntry.js",
+        marketing: "marketing@http://localhost:8091/remoteEntry.js",
       },
       shared: packageJson.dependencies,
     }),

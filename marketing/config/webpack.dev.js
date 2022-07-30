@@ -7,7 +7,7 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   devServer: {
-    port: 8082,
+    port: 8091,
     // always return the index.html page if the user types a wrong path?
     //  related to navigation
     historyApiFallback: {
