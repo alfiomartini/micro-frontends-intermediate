@@ -1,0 +1,6 @@
+const CONTAINER_PORT_DEV = 8090;
+const MARKETING_PORT_DEV = 8091;
+
+module.exports = {
+    CONTAINER_PORT_DEV, MARKETING_PORT_DEV
+}
