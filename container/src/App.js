@@ -1,16 +1,19 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { mount } from "marketing/MarketingApp";
 import AppMarketing from "./components/AppMarketing.js";
+import Header from "./components/Header.js";
 
-console.log("mount function", mount);
+ 
 
 function App() {
   return (
-    <div>
-      <h1>Container App</h1>
-      <hr />
-      <AppMarketing />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <AppMarketing />
+      </div>
+    </BrowserRouter>
   );
 }
 
