@@ -4,7 +4,6 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const commonConfig = require("./webpack.common");
 const packageJson = require("../package.json");
 const { MARKETING_PORT_DEV, CONTAINER_PORT_DEV } = require("../../utils");
- 
 
 const devConfig = {
   mode: "development",
@@ -13,7 +12,7 @@ const devConfig = {
     // always return the index.html page if the user types a wrong path?
     //  related to navigation
     historyApiFallback: {
-      index: "index.html",
+      index: "/index.html",
     },
   },
   // needed to avoid warning message in devtools
