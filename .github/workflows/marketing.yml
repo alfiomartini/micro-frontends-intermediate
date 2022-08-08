@@ -1,13 +1,15 @@
-name: deploy-container
+name: deploy-marketing
 
 on:
   push:
     branches:
       - master
+    paths:
+      - "marketing/**"
 
 defaults:
   run:
-    working-directory: container
+    working-directory: marketing
 
 jobs:
   build:
@@ -17,20 +19,18 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
-        env:
-          PROD_DOMAIN: ${{ secrets.PROD_DOMAIN }}
 
       - uses: shinyinc/action-aws-cli@v1.2
 
-      - run: aws s3 sync dist s3://${{secrets.AWS_S3_BUCKET_NAME}}/container/latest
+      - run: aws s3 sync dist s3://${{secrets.AWS_S3_BUCKET_NAME}}/marketing/latest
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: sa-east-1
 
-      # do I need to create invalidation rules for 'index.html' in the cloudfront?
+      # do I need to create invalidation rules for 'remoteEntry.js' in the cloudfront?
       # Yes, cloudfront just update new files, not changed files
-      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID}}  --paths "/container/latest/index.html"
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID}}  --paths "/marketing/latest/remoteEntry.js"
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}

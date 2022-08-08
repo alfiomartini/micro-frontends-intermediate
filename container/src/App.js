@@ -1,16 +1,23 @@
 import React from "react";
-import { mount } from "marketing/MarketingApp";
+import { BrowserRouter } from "react-router-dom";
 import AppMarketing from "./components/AppMarketing.js";
+import Header from "./components/Header.js";
+import { StylesProvider, createGenerateClassName } from "@material-ui/styles";
 
-console.log("mount function", mount);
+const generateClassName = createGenerateClassName({
+  productionPrefix: "co",
+});
 
 function App() {
   return (
-    <div>
-      <h1>Container App</h1>
-      <hr />
-      <AppMarketing />
-    </div>
+    <StylesProvider generateClassName={generateClassName}>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <AppMarketing />
+        </div>
+      </BrowserRouter>
+    </StylesProvider>
   );
 }
 
