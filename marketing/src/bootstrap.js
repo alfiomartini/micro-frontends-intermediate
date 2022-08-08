@@ -5,12 +5,20 @@ import { createMemoryHistory } from "history";
 
 // Mount function to start the App
 function mount(el, { onChildNavigate }) {
+  // creates an in-memory history object that does not interact with the browser URL
   const history = createMemoryHistory();
 
   // whenever the url changes, call 'onChildNavigate'
   if (onChildNavigate) history.listen(onChildNavigate);
 
   ReactDOM.render(<App history={history} />, el);
+
+  const onParentNavigate = ({ pathname: nextPathname }) => {
+    const { pathname } = history.location;
+    if (pathname !== nextPathname) history.push(nextPathname);
+  };
+
+  return { onParentNavigate };
 }
 
 // If we are in development and in isolation, call mount immediately

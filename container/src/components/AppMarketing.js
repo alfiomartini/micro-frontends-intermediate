@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { mount as mountMarkettingApp } from "marketing/MarketingApp";
 import { useHistory } from "react-router-dom";
 
-// this is the App from marketing/src, which is a constant in the mount function
+// this is the AppMarketing component
 export default () => {
   const marketingRef = useRef(null);
   // copy of browser history
@@ -18,7 +18,10 @@ export default () => {
   // only once
   useEffect(() => {
     // render the marketing app as defined in marketing/src/bootstrap.js
-    mountMarkettingApp(marketingRef.current, { onChildNavigate });
+    const { onParentNavigate } = mountMarkettingApp(marketingRef.current, {
+      onChildNavigate,
+    });
+    browserHistory.listen(onParentNavigate);
   }, []);
   return <div ref={marketingRef}></div>;
 };
