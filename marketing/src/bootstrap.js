@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { createMemoryHistory } from "history";
+import { createMemoryHistory, createBrowserHistory } from "history";
 
 // Mount function to start the App
-function mount(el, { onChildNavigate }) {
+function mount(el, { onChildNavigate, defaultHistory }) {
   // creates an in-memory history object that does not interact with the browser URL
-  const history = createMemoryHistory();
+  const history = defaultHistory || createMemoryHistory();
 
   // whenever the url changes, call 'onChildNavigate'
   if (onChildNavigate) history.listen(onChildNavigate);
@@ -25,7 +25,7 @@ function mount(el, { onChildNavigate }) {
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.querySelector("#marketing-dev-root");
   if (devRoot) {
-    mount(devRoot, {});
+    mount(devRoot, { defaultHistory: createBrowserHistory() });
   }
 }
 
