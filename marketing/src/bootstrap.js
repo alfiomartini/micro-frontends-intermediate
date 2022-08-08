@@ -8,7 +8,7 @@ function mount(el, { onNavigate }) {
   const history = createMemoryHistory();
 
   // whenever the url changes, call 'onNavigate'
-  history.listen(onNavigate);
+  if (onNavigate) history.listen(onNavigate);
 
   ReactDOM.render(<App history={history} />, el);
 }
@@ -17,7 +17,7 @@ function mount(el, { onNavigate }) {
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.querySelector("#marketing-dev-root");
   if (devRoot) {
-    mount(devRoot);
+    mount(devRoot, {});
   }
 }
 

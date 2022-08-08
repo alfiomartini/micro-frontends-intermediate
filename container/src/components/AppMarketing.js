@@ -11,7 +11,8 @@ export default () => {
   // location.pathname arg comes from 'history' object and it is passed on by
   // the listen function in the memory history from Router
   const onNavigate = ({ pathname: nextPathname }) => {
-    browserHistory.push(nextPathname);
+    const { pathname } = browserHistory.location;
+    if (pathname !== nextPathname) browserHistory.push(nextPathname);
   };
 
   // only once
