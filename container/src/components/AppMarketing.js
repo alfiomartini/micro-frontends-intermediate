@@ -10,7 +10,7 @@ export default () => {
 
   // location.pathname arg comes from 'history' object and it is passed on by
   // the listen function in the memory history from Router
-  const onNavigate = ({ pathname: nextPathname }) => {
+  const onChildNavigate = ({ pathname: nextPathname }) => {
     const { pathname } = browserHistory.location;
     if (pathname !== nextPathname) browserHistory.push(nextPathname);
   };
@@ -18,7 +18,7 @@ export default () => {
   // only once
   useEffect(() => {
     // render the marketing app as defined in marketing/src/bootstrap.js
-    mountMarkettingApp(marketingRef.current, { onNavigate });
+    mountMarkettingApp(marketingRef.current, { onChildNavigate });
   }, []);
   return <div ref={marketingRef}></div>;
 };

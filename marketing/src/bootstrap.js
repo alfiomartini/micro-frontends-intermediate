@@ -4,11 +4,11 @@ import App from "./App";
 import { createMemoryHistory } from "history";
 
 // Mount function to start the App
-function mount(el, { onNavigate }) {
+function mount(el, { onChildNavigate }) {
   const history = createMemoryHistory();
 
-  // whenever the url changes, call 'onNavigate'
-  if (onNavigate) history.listen(onNavigate);
+  // whenever the url changes, call 'onChildNavigate'
+  if (onChildNavigate) history.listen(onChildNavigate);
 
   ReactDOM.render(<App history={history} />, el);
 }
