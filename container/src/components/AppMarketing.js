@@ -3,7 +3,7 @@ import { mount as mountMarkettingApp } from "marketing/MarketingApp";
 import { useHistory } from "react-router-dom";
 
 // this is the AppMarketing component
-export default () => {
+export default AppMarketing = () => {
   const marketingRef = useRef(null);
   // copy of browser history
   const browserHistory = useHistory();
