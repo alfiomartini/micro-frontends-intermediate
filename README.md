@@ -2,4 +2,4 @@
 
 ## Overview
 
-<img src="assets/overview.png" alt="Application Overview" style="height: 270px; width:450px;"/>
+<img src="assets/overview.png" alt="Overview" style="height: 270px; width:450px;"/>
