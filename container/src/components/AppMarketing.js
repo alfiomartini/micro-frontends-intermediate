@@ -23,5 +23,6 @@ export const AppMarketing = () => {
     });
     browserHistory.listen(onParentNavigate);
   }, []);
+
   return <div ref={marketingRef}></div>;
 };
