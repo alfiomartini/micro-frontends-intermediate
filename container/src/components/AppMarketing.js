@@ -12,7 +12,14 @@ export const AppMarketing = () => {
   // the listen function in the memory history from Router
   const onChildNavigate = ({ pathname: nextPathname }) => {
     const { pathname } = browserHistory.location;
-    if (pathname !== nextPathname) browserHistory.push(nextPathname);
+    if (pathname !== nextPathname) {
+      console.log(
+        "onChildNavigate, pathname, nextPathname",
+        pathname,
+        nextPathname
+      );
+      browserHistory.push(nextPathname);
+    }
   };
 
   // only once
