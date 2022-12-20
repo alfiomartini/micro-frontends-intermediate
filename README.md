@@ -11,10 +11,10 @@ understand example, see [here](https://github.com/alfiomartini/micro-frontends-b
 
 This microfrontend application is composed of four smaller apps: the _container_, i.e., the shell that
 coordinates the whole applications, and its constituent microfrontend themselves: _marketing_, _auth_ and
-_dashboard_. The container, marketing, and auth apps are built with \_React\*, while the dashboard is built with _Vue_.
+_dashboard_. The container, marketing, and auth apps are built with _React_, while the dashboard is built with _Vue_.
 
 These definitions are made with the help of webpack configuration files. For instance, here are the configuration files (development mode) for the [container](container/config/webpack.dev.js),
-and for the [marketing](marketing/config/webpack.dev.js) app. You can find detailed explanations and lots of diagrams in the documentation slides [here](slides/microfrontends-intro.pdf).
+and for the [marketing](marketing/config/webpack.dev.js) app. The rendering of the microfrontend _marketing_ in the container happens in the same way as explained in the introduction to microfrontends [here](https://github.com/alfiomartini/micro-frontends-basic). For instance, the _marketing_ app exposes and exports a _mount_ function that receives a DOM element as an argument and uses it to insert its React component in the dom. This mount function is then imported by the container to render the corresponding _marketing_ microfrontend. You can find detailed explanations and lots of diagrams in the documentation slides [here](slides/microfrontends-intermediate.pdf).
 
 ---
 
