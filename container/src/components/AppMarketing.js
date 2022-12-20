@@ -3,7 +3,7 @@ import { mount as mountMarkettingApp } from "marketing/MarketingApp";
 import { useHistory } from "react-router-dom";
 
 // this is the AppMarketing component
-export default () => {
+export const AppMarketing = () => {
   const marketingRef = useRef(null);
   // copy of browser history
   const browserHistory = useHistory();
@@ -12,7 +12,14 @@ export default () => {
   // the listen function in the memory history from Router
   const onChildNavigate = ({ pathname: nextPathname }) => {
     const { pathname } = browserHistory.location;
-    if (pathname !== nextPathname) browserHistory.push(nextPathname);
+    if (pathname !== nextPathname) {
+      console.log(
+        "onChildNavigate, pathname, nextPathname",
+        pathname,
+        nextPathname
+      );
+      browserHistory.push(nextPathname);
+    }
   };
 
   // only once
@@ -23,5 +30,6 @@ export default () => {
     });
     browserHistory.listen(onParentNavigate);
   }, []);
+
   return <div ref={marketingRef}></div>;
 };
